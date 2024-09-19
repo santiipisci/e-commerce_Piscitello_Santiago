@@ -1,7 +1,7 @@
 let categoria = "Productos"
 document.querySelector("h1").innerText = categoria
 
-let arrProds = [];
+let array = [];
 
 for (let i = 1; i < 6; i++) {
   const prod = `
@@ -13,9 +13,12 @@ for (let i = 1; i < 6; i++) {
         <p class="card-text">
           Producto ${i}
         </p>
+        <button class="btn btn-primary" type="button">
+              <a href="producto.html" style="color: rgb(49, 43, 43); text-decoration: none;">Ver más</a>
+          </button>
       </div>    
     </div>`;
-  arrProds.push(prod);
+  array.push(prod);
 }
 
-document.querySelector(".container").innerHTML = arrProds.join('');
+document.querySelector(".container").innerHTML = array.join('');

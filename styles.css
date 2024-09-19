@@ -1,0 +1,77 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; /* Color de fondo claro */
+}
+
+/* Estilos del header y la navbar */
+header {
+    background-color: #343a40; /* Color de fondo oscuro para la navbar */
+    padding: 10px 0;
+}
+
+.navbar {
+    padding: 0.5rem 1rem;
+}
+
+.navbar-brand {
+    color: #ffffff; /* Color del texto de la marca */
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: #ffffff; /* Color de los enlaces */
+}
+
+.nav-link:hover {
+    color: #adb5bd; /* Color al pasar el ratón sobre los enlaces */
+}
+
+.dropdown-menu {
+    background-color: #343a40; /* Fondo del menú desplegable */
+}
+
+.dropdown-item {
+    color: #ffffff; /* Color de los elementos del menú desplegable */
+}
+
+.dropdown-item:hover {
+    background-color: #495057; /* Fondo al pasar el ratón sobre los elementos del menú desplegable */
+}
+
+/* Estilos del formulario de búsqueda */
+.form-control {
+    border-radius: 0.25rem; /* Bordes redondeados para el input */
+}
+
+.btn-outline-success {
+    border-color: #28a745; /* Color del borde del botón */
+    color: #28a745; /* Color del texto del botón */
+}
+
+.btn-outline-success:hover {
+    background-color: #28a745; /* Fondo verde al pasar el ratón sobre el botón */
+    color: white; /* Texto blanco al pasar el ratón sobre el botón */
+}
+
+/* Estilos del main y footer */
+main {
+    padding: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #343a40;
+    color: white;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
