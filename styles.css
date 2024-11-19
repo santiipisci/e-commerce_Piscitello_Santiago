@@ -1,77 +1,231 @@
-/* Estilos generales */
+/* Estilos Generales */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa; /* Color de fondo claro */
+    background-color: #f4f4f4; /* Fondo claro */
+    color: #333; /* Color de texto */
 }
 
-/* Estilos del header y la navbar */
+/* Estilos del Encabezado */
 header {
-    background-color: #343a40; /* Color de fondo oscuro para la navbar */
-    padding: 10px 0;
+    background-color: #007bff; /* Color azul */
+    padding: 10px 20px;
 }
 
 .navbar {
-    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar-brand {
-    color: #ffffff; /* Color del texto de la marca */
-    font-size: 1.5rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 28px;
 }
 
 .nav-link {
-    color: #ffffff; /* Color de los enlaces */
+    color: #ffffff;
+    text-decoration: none;
 }
 
-.nav-link:hover {
-    color: #adb5bd; /* Color al pasar el ratón sobre los enlaces */
-}
-
-.dropdown-menu {
-    background-color: #343a40; /* Fondo del menú desplegable */
-}
-
-.dropdown-item {
-    color: #ffffff; /* Color de los elementos del menú desplegable */
-}
-
-.dropdown-item:hover {
-    background-color: #495057; /* Fondo al pasar el ratón sobre los elementos del menú desplegable */
-}
-
-/* Estilos del formulario de búsqueda */
-.form-control {
-    border-radius: 0.25rem; /* Bordes redondeados para el input */
-}
-
-.btn-outline-success {
-    border-color: #28a745; /* Color del borde del botón */
-    color: #28a745; /* Color del texto del botón */
-}
-
-.btn-outline-success:hover {
-    background-color: #28a745; /* Fondo verde al pasar el ratón sobre el botón */
-    color: white; /* Texto blanco al pasar el ratón sobre el botón */
-}
-
-/* Estilos del main y footer */
+/* Estilos del Contenido Principal */
 main {
     padding: 20px;
 }
 
-footer {
+h1 {
+    color: #343a40; /* Color gris oscuro */
     text-align: center;
-    padding: 10px 0;
-    background-color: #343a40;
-    color: white;
 }
 
+/* Contenedor de Productos */
 .container {
+    margin-right: 30px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    padding: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 5fr)); /* Diseño responsivo */
+    gap: 50px; /* Espacio entre tarjetas */
 }
 
+/* Estilos para Tarjetas de Producto */
+.product-card {
+    background-color: #ffffff; /* Fondo blanco para las tarjetas de producto */
+    border-radius: 8px; /* Esquinas redondeadas */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+    overflow: hidden; /* Esquinas redondeadas */
+    transition: transform 0.2s, box-shadow 0.2s; /* Transición suave al pasar el mouse */
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el mouse */
+}
+
+.product-card img {
+    width: 100%; /* Imagen ocupa todo el ancho de la tarjeta */
+}
+
+.product-info {
+    padding: 15px; /* Espaciado interno en la tarjeta */
+}
+
+.product-title {
+    font-size: 18px; /* Tamaño del título del producto */
+    font-weight: bold; /* Negrita para el título */
+}
+
+.product-price {
+    color: #28a745; /* Color verde para el precio */
+    font-size: 16px; /* Tamaño del texto del precio */
+}
+
+/* Estilo para el botón de agregar al carrito */
+.btn-add-to-cart {
+    background-color: #007bff; /* Azul para el botón */
+    color: white; /* Texto blanco en el botón */
+    padding: 10px; /* Espaciado interno en el botón */
+    border-radius: 5px; /* Esquinas redondeadas en el botón */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Transición suave en el color de fondo */
+}
+
+.btn-add-to-cart:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el mouse sobre el botón */
+}
+
+/* Estilos de Formularios */
+form {
+    max-width: 400px; /* Ancho máximo del formulario */
+    margin: auto; /* Centrar el formulario en la página */
+    background-color: #ffffff; /* Fondo blanco para formularios */
+    padding: 20px; /* Espaciado interno en el formulario */
+    border-radius: 5px; /* Esquinas redondeadas */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.form-label {
+    margin-bottom: 5px; /* Margen inferior para etiquetas */
+}
+
+.input{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px; /* Botones y campos ocupan todo el ancho disponible */
+}
+
+.btn{
+    width: 100%;
+}
+
+/* Estilos de Botones Generales y específicos*/
+.btn-primary,
+button.search,
+button.reset,
+button.btncategorias {
+    background-color:#007bff ;
+    border:none ;
+    color:white ;
+    padding:.375rem .75rem ;
+    border-radius:.25rem ;
+    cursor:pointer ;
+    transition:.3s ease-in-out ;
+}
+
+.btn-primary:hover,
+button.search:hover,
+button.reset:hover,
+button.btncategorias:hover {
+   background-color:#0056b3 ;
+}
+
+/* Estilos del Pie de Página */
+footer {
+   background-color:#343a40 ;
+   color:#ffffff ;
+   text-align:center ;
+   padding :10px ;
+}
+
+/* Estilo para etiquetas o badges en las tarjetas (ejemplo "Nuevo", "Oferta")*/
+.badge {
+   display :inline-block ;
+   background-color :#ffc107 ;
+   color:#fff ;
+   padding :5px ;
+   border-radius :12px ;
+   font-size :12px ;
+}
+
+/* Estilo para los campos de búsqueda en la barra de navegación*/
+.input[type="search"] {
+   border-radius:.25rem ;
+   border-color:#ced4da ;
+   height:auto ;
+   padding:.375rem .75rem ;
+}
+
+/* Estilo para listas desplegables en la barra de navegación*/
+.dropdown-menu.categorias-lista {
+   background-color:#ffffff ;
+   border-radius:.25rem ;
+   box-shadow:.5rem .5rem .75rem rgba(0,0,0,.15) ;
+}
+
+/* Contenedor de búsqueda y usuario alineados a la derecha*/
+.container-fluid-search {
+   display: flex;
+   justify-content: space-between;
+   align-items: center; 
+   max-width: 600px; 
+   margin: 20px auto; 
+   border-radius: 5px; 
+   overflow: hidden; 
+}
+
+.input { 
+   flex-grow:1 ; 
+   padding:.375rem .75rem ; 
+   border:none ; 
+   border-radius:.25rem ; 
+}
+
+.username { 
+    margin-right: 10px;
+    margin-left: 100px;
+}
+
+/* Media Queries para pantallas pequeñas*/
+@media (max-width:768px) { 
+   .search-container { 
+      width :90% ; 
+      margin :10px auto ; 
+   } 
+}
+
+
+/* Efecto hover para las imágenes */
+img:hover {
+    transform: scale(1.05); /* Aumentar ligeramente el tamaño al pasar el mouse */
+    transition: transform 0.3s ease; /* Transición suave */
+}
+
+.login-des{
+    background-color:white ;
+    border:none ;
+    color:black ;
+    padding:.375rem .75rem ;
+    border-radius:.25rem ;
+    cursor:pointer ;
+    transition:.3s ease-in-out ;
+}
+
+.login-des:hover{
+    background-color: #ced4da;
+}
+
+.card:hover{
+    transform: scale(1.05); /* Aumentar ligeramente el tamaño al pasar el mouse */
+    transition: transform 0.3s ease; /* Transición suave */
+}

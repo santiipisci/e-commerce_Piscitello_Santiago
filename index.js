@@ -1408,40 +1408,26 @@ function cards(categorySearch) {
 let cardss
   if (categorySearch){
      cardss = data.map((producto) => {if(categorySearch === producto.category){
-      return`<div class="card" style="width: 18rem;">
-     <img src="${producto.img}" class="card-img-top" alt="imagen ${producto.id}" style="object-fit: cover; width: 100%; height: 300px;"/>
-        <div class="card-body d-flex flex-column">
-             <p class="card-text">
-                 ${producto.pc_model}
-             </p>
-             <p class="card-text">
-                Procesador: ${producto.processor}
-             </p>
-             <p class="card-text">
-                Placa de video: ${producto.graphics_card}
-             </p>
-             <p class="card-text">
-                Precio: ${producto.ram_capacity}
-             </p>
-             <p class="card-text">
-            Categoria: ${producto.category}
-         </p>
-             <p class="card-text">
-                Precio: ${producto.price}
-             </p>
-             <p class="card-text">
-                Disponibilidad: ${producto.storage_capacity}
-             </p>
-         </div>
-         <button class="btn btn-primary" type="button">
-               <a href="producto.html?prod=${producto.id}" style="color: rgb(49, 43, 43); text-decoration: none;">Ver más</a>
-           </button>
-   </div>`
+      return`<div class="card" style="width: 18rem; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); overflow: hidden; display: flex; flex-direction: column; padding-left: 10px; padding-right: 10px"; padding-bottom:10px;>
+    <img src="${producto.img}" class="card-img-top" alt="imagen ${producto.id}" style="object-fit: cover; width: 100%; height: 300px;" />
+    <div class="card-body d-flex flex-column" style="flex-grow: 1;">
+        <p class="card-text">${producto.pc_model}</p>
+        <p class="card-text">Procesador: ${producto.processor}</p>
+        <p class="card-text">Gráfica: ${producto.graphics_card}</p>
+        <p class="card-text">Memoria RAM: ${producto.ram_capacity}</p>
+        <p class="card-text">Categoría: ${producto.category}</p>
+        <p class="card-text">Precio: ${producto.price}</p>
+        <p class="card-text">Disponibilidad: ${producto.storage_capacity}</p>
+    </div>
+    <button class="btn btn-primary" type="button" style="margin-top: auto;">
+        <a href="producto.html?prod=${producto.id}" style="color: rgb(49, 43, 43); text-decoration: none;">Ver más</a>
+    </button>
+</div>`
      }
      });
      document.querySelector(".container").innerHTML = cardss.join("");
   }else{
-     cardss = data.map((producto) => `<div class="card" style="width: 18rem;">
+     cardss = data.map((producto) => `<div class="card" style="width: 18rem; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); overflow: hidden; transition: transform 0.2s; padding-left: 10px; padding-right: 10px; padding-bottom: 10px; ">
     <img src="${producto.img}" class="card-img-top" alt="imagen ${producto.id}" style="object-fit: cover; width: 100%; height: 300px;"/>
        <div class="card-body d-flex flex-column">
             <p class="card-text">
@@ -1451,13 +1437,13 @@ let cardss
                Procesador: ${producto.processor}
             </p>
             <p class="card-text">
-               Placa de video: ${producto.graphics_card}
+               Gráfica: ${producto.graphics_card}
             </p>
             <p class="card-text">
-               Precio: ${producto.ram_capacity}
+               Memoria RAM: ${producto.ram_capacity}
             </p>
             <p class="card-text">
-           Disponibilidad: ${producto.category}
+           Categoría: ${producto.category}
         </p>
             <p class="card-text">
                Precio: ${producto.price}
@@ -1467,15 +1453,19 @@ let cardss
             </p>
         </div>
         <button class="btn btn-primary" type="button">
-              <a href="producto.html?prod=${producto.id}" style="color: rgb(49, 43, 43); text-decoration: none;">Ver más</a>
+              <a href="producto.html?prod=${producto.id}" style="color: white; text-decoration: none;">Ver más</a>
           </button>
   </div>`);
   document.querySelector(".container").innerHTML = cardss.join("");
   }
 }
 
-cards();
-
+document.querySelector(".container").innerHTML = "Cargando..."
+const loadingPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(cards())
+  }, 3000)
+})
 
 function buscador1() {
   let input = document.querySelector(".input")
@@ -1496,6 +1486,9 @@ function buscador1() {
             <p class="card-text">
                Disponibilidad: ${producto.storage_capacity}
             </p>
+            <button class="btn btn-primary" type="button">
+              <a href="producto.html?prod=${producto.id}" style="color: rgb(49, 43, 43); text-decoration: none;">Ver más</a>
+          </button>
         </div>`);
   document.querySelector(".container").innerHTML = cards.join("");
 }

@@ -1,14 +1,19 @@
+let id = parseInt(window.location.search.split("=")[1])
 class Producto {
-    constructor(titulo, detalle, disponibilidad, precio, imagen) {
-        this.titulo = titulo
-        this.detalle = detalle
-        this.disponibilidad = disponibilidad
-        this.precio = precio
-        this.imagen = imagen
-    }
+  constructor(titulo, detalle, disponibilidad, precio, imagen) {
+    this.titulo = titulo
+    this.detalle = detalle
+    this.disponibilidad = disponibilidad
+    this.precio = precio
+    this.imagen = imagen
+  }
 }
 
-let product = new Producto ("Alfa Romeo 4C Coupe", "El placer de conducir el Alfa Romeo 4C era el de un superdeportivo. La tracción trasera, el motor central sobrealimentado de 1.75 litros (capaz de entregar hasta 240hp) y la perfecta relación potencia-peso fueron diseñados para garantizar la máxima agilidad y rendimiento de un superdeportivo.", "18", "$80000", "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/2.jpg")
+let product = new Producto("Alfa Romeo 4C Coupe", "El placer de conducir el Alfa Romeo 4C era el de un superdeportivo. La tracción trasera, el motor central sobrealimentado de 1.75 litros (capaz de entregar hasta 240hp) y la perfecta relación potencia-peso fueron diseñados para garantizar la máxima agilidad y rendimiento de un superdeportivo.", "18", "$80000", "https://66d9ee6caa07a954166f10ed--gregarious-melba-cacdba.netlify.app/2.jpg")
+
+let params = new URLSearchParams(window.location.search);
+let id1 = parseInt(params.get("id"));
+
 
 let data = [{
   "id": 1,
@@ -1411,55 +1416,107 @@ let data = [{
   "price": 833.7,
   "category": "Memorias"
 }];
-
-let id = parseInt(window.location.search.split("=")[1])
-
-let prodFound = data.find((producto) => producto.id === id);
+let prodEncontrado = data.find((producto) => producto.id === id);
 
 const productoo = `
-<div class="card d-flex flex-column align-items-center" style="width: 18rem">
-<img src="${prodFound.img}"
-alt="imagen ${prodFound.titulo}"
-style="object-fit: cover; width: 100%; height: 150px;"
+<div class="card1 d-flex flex-column align-items-center" style="width: 18rem">
+<img src="${prodEncontrado.img}"
+alt="imagen ${prodEncontrado.titulo}"
+style="object-fit: cover; width: 100%; height: 100%;"
     />
     <div class="card-body d-flex flex-column">
 
         <p class="card-text">
-            ${prodFound.pc_model}
+            ${prodEncontrado.pc_model}
         </p>
         <p class="card-text">   
-           Procesador:  ${prodFound.processor}
+           Procesador:  ${prodEncontrado.processor}
         </p>
         <p class="card-text">
-           Memoria Ram: ${prodFound.ram_capacity}
+           Memoria Ram: ${prodEncontrado.ram_capacity}
         </p>
         <p class="card-text">
-           Placa de video: ${prodFound.graphics_card}
+           Placa de video: ${prodEncontrado.graphics_card}
         </p>
         <p class="card-text">
-           Motherboard: ${prodFound.motherboard}
+           Motherboard: ${prodEncontrado.motherboard}
         </p>
         <p class="card-text">
-           Fuente de alimentación: ${prodFound.power_supply_wattage}
+           Fuente de alimentación: ${prodEncontrado.power_supply_wattage}
         </p>
         <p class="card-text">
-           Gabinete: ${prodFound.case_type}
+           Gabinete: ${prodEncontrado.case_type}
         </p>
         <p class="card-text">
-           Sistema de refrigeración: ${prodFound.cooling_system}
+           Sistema de refrigeración: ${prodEncontrado.cooling_system}
         </p>
         <p class="card-text">
-           Categoria: ${prodFound.category}
+           Categoria: ${prodEncontrado.category}
         </p>
         <p class="card-text">
-           Precio: ${prodFound.price}
+           Precio: ${prodEncontrado.price}
         </p>
         <p class="card-text">
-           Disponibilidad: ${prodFound.storage_capacity}
+           Disponibilidad: ${prodEncontrado.storage_capacity}
         </p>
-        
-    </div>
-</div>`;
+${localStorage.getItem("session") ?
+    `
+ <div class="input-group mb-3">
+       <button id="gay-fution1-bylola" type="button">-</button>
+       <input class="form-control text-center shadow-none" id="number-counter" value="1" type="number"/>
+       <button id="gay-fution2-bylola" type="button">+</button>
+     </div>
+     <button type="button" class="btn btn-dark" id="addCarrito">Añadir al carrito</button>`
+
+    : `<a href="./login.html"><button class="login-des">Para comprar, debes iniciar sesión</button></a>`}
+</div>
+</div>
+`;
 
 const main = document.querySelector("main");
-main.innerHTML= productoo;
+main.innerHTML = productoo;
+
+const input = document.getElementById('number-counter');
+
+document.getElementById('gay-fution2-bylola').addEventListener('click', function () {
+  if (input.value <= prodEncontrado.storage_capacity - 1) {
+    input.value = Number(input.value) + 1;
+  } else {
+    alert("Fuera de stock!");
+  }
+});
+
+document.getElementById('gay-fution1-bylola').addEventListener('click', function () {
+  if (input.value > 1) {
+    input.value -= 1;
+  }
+});
+
+document.getElementById('addCarrito').addEventListener('click', function () {
+  let carrito = JSON.parse(localStorage.getItem("cart"))
+  console.log(carrito)
+  if (!carrito) {
+    carrito = []
+  }
+  const indice123 = carrito.findIndex((prodCart) => prodCart.prod.id === id);
+  if (indice123) {
+    if (input.value <= prodEncontrado.storage_capacity - 1) {
+      carrito.push({
+        prod: prodEncontrado,
+        quantity: input.value
+      })
+      localStorage.setItem("cart", JSON.stringify(carrito))
+      return
+    } else {
+      alert("Fuera de stock!");
+      return
+    }
+  }
+  if (carrito[indice123].quantity + 1 <= prodEncontrado.storage_capacity) {
+    carrito[indice123].quantity + 1
+    localStorage.setItem("cart", JSON.stringify(carrito))
+  } else {
+    alert("Fuera de stock!");
+  }
+})
+
