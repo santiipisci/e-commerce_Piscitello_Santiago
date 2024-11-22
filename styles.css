@@ -229,3 +229,7 @@ img:hover {
     transform: scale(1.05); /* Aumentar ligeramente el tamaño al pasar el mouse */
     transition: transform 0.3s ease; /* Transición suave */
 }
+
+.carritoImg{
+    margin-right: 15px;
+}

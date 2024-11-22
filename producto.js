@@ -1494,16 +1494,16 @@ document.getElementById('gay-fution1-bylola').addEventListener('click', function
 
 document.getElementById('addCarrito').addEventListener('click', function () {
   let carrito = JSON.parse(localStorage.getItem("cart"))
-  console.log(carrito)
   if (!carrito) {
     carrito = []
   }
   const indice123 = carrito.findIndex((prodCart) => prodCart.prod.id === id);
   if (indice123) {
     if (input.value <= prodEncontrado.storage_capacity - 1) {
+      console.log(typeof prodEncontrado.id)
       carrito.push({
         prod: prodEncontrado,
-        quantity: input.value
+        quantity: parseInt(input.value)
       })
       localStorage.setItem("cart", JSON.stringify(carrito))
       return
@@ -1512,8 +1512,9 @@ document.getElementById('addCarrito').addEventListener('click', function () {
       return
     }
   }
-  if (carrito[indice123].quantity + 1 <= prodEncontrado.storage_capacity) {
-    carrito[indice123].quantity + 1
+  if (carrito[indice123].quantity + input.value <= prodEncontrado.storage_capacity) {
+    console.log(typeof input.value)
+    carrito[indice123].quantity += parseInt(input.value)
     localStorage.setItem("cart", JSON.stringify(carrito))
   } else {
     alert("Fuera de stock!");

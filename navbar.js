@@ -45,7 +45,7 @@ let navbar = `
     <div class="d-flex align-items-center">
       <p class="username" style="color: white;">Te damos la bienvenida ${localStorage.getItem("session")}</p>
     </div>      
-    <a href="cart.html"><img height="25" src="cart.png" alt="Comprar"/></a>
+    <a href="cart.html"><img class="carritoImg" height="25" src="cart.png" alt="Comprar"/></a>
         <div>
         ${localStorage.getItem("session")?`<button class="login-des" onclick = "closeSession()">Cerrar sesión</button>`: `<a href="./login.html"><button class="login-des"> Iniciar sesión</button></a>`}
         </div>

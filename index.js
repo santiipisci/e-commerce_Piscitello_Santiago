@@ -1,6 +1,6 @@
 let categoria = "Productos"
 
-document.querySelector("h1").innerText = categoria
+document.querySelector("h1").innerHTML = categoria
 
 let data = [{
   "id": 1,
